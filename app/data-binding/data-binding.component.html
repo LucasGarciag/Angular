@@ -1,0 +1,93 @@
+<section>
+<!--  <article>-->
+<!--    <h3>Interpolação: </h3>-->
+
+<!--    <p>String renderizada com interpolação: {{ url }}</p>-->
+<!--    &lt;!&ndash; Posso usar a interpolação para fazer calculos e chamar metodos: &ndash;&gt;-->
+<!--    <p>Resultado de 1 + 1 é: {{ 1 + 1 }}</p>-->
+<!--    <p>Resultado de 1 + 1 não é: {{ 1 + 1 + getValor() }}</p>-->
+
+<!--    &lt;!&ndash; Posso usar a interpolação para expressões booleanas:-->
+<!--    Estou fazendo uma logica abaixo que compara true com true que da true como resultado&ndash;&gt;-->
+<!--    <p>Curso de Angular e gosto do curso: {{ cursoAngular && getCurtirCurso() }}</p>-->
+
+<!--  </article>-->
+
+<!--  <article>-->
+<!--    <h3>Data Binding: </h3>-->
+
+<!--    <p>Url do site na qual estou pegando a imagem: {{ urlImagem }}</p>-->
+<!--&lt;!&ndash;    Estou puxando a imagem pelo link&ndash;&gt;-->
+<!--    <img  src="{{ urlImagem }}" />-->
+
+<!--    <br />-->
+
+<!--    <p>Puxando a imagem pelo property binding: </p>-->
+<!--&lt;!&ndash;   Coloco entre colchetes minha propriedade &ndash;&gt;-->
+<!--    <img [src]="urlImagem">-->
+
+<!--&lt;!&ndash;Por tras dos panos, quando o  angular lê esse colchete ele interpreta assim: <img bind-src="urlImagem">-->
+<!--no final das contas da no mesmo.&ndash;&gt;-->
+
+<!--  </article>-->
+
+  <article>
+    <h3>Style Binding</h3>
+<!--  Mesma forma de fazer o binding, so que no lugar das variaveis nos podemos usar o css-->
+    <div>
+      <p>Selecione uma classe:</p>
+
+<!--      Declarando uma variavel local para pegar o value do option:
+        #variavel: estou declarando minha variavel
+        (change)="0": estou escutando para quando o estado mudar eu pode fazer algo.
+        -->
+      <select #variavel (change)="0">
+        <option value="alert-success">success</option>
+        <option value="alert-info">info</option>
+        <option value="alert-warning">warning</option>
+        <option value="alert-danger">Danger</option>
+      </select>
+    </div>
+
+    <br />
+    <br />
+
+    <div class="alert {{ variavel.value }}" role="alert">
+      Texto colorido conforme o valor do combobox.
+    </div>
+
+    <br />
+    <br />
+
+<!-- Abaixo vou implementar a logica para quando selecionar um option os outros sumirem e ficar so o
+selecionado, pegando o value do option: -->
+    <div class="alert alert-success" role="alert"
+      [class.alert-success]="variavel.value == 'alert-success'"
+    >...</div>
+<!-- Se o valor do meu select for igual a alert-success ele aparece, se não ele some. -->
+
+    <div class="alert alert-info" role="alert"
+         [class.alert-info]="variavel.value == 'alert-info'"
+    >...</div>
+    <div class="alert alert-warning" role="alert"
+         [class.alert-warning]="variavel.value == 'alert-warning'"
+    >...</div>
+    <div class="alert alert-danger" role="alert"
+         [class.alert-danger]="variavel.value == 'alert-danger'"
+    >...</div>
+  </article>
+
+  <article>
+    <h3>Style Binding</h3>
+
+<!--    Abaixo uma logica muito boa. Acessando o atributo style.display verificamos se o valor da variavel é
+igual a alert-danger. se for ? coloca como 'block' se não 'none' -->
+    <div class="alert alert-danger" role="alert"
+      [style.display]="variavel.value=='alert-danger' ? 'block' : 'none'"
+    >
+      Erro
+    </div>
+
+  </article>
+
+</section>
